@@ -3,11 +3,10 @@ import pyodbc
 from Cliente import Cliente
 from Vehiculo import Vehiculo
 from Servicio import Servicio
-from Producto import Producto
 #Inicio conexion a base de datos 
 try:
     #aqui, cambien aurora por el nombre de su server, database por el nombre de la base de datos, UID Y PWD son el usuario y contraseña para conectarse con credenciales de sql server
-    connection = pyodbc.connect('DRIVER={SQL Server};SERVER=AURORA;DATABASE=ProyectoTaller;UID=Felipe;PWD=contra')
+    connection = pyodbc.connect('DRIVER={SQL Server};SERVER=AURORA;DATABASE=ProyectoTaller;UID=Felipe;PWD=rubio')
     print("conexion exitosa")
     cursor = connection.cursor()
 
@@ -109,7 +108,9 @@ def RegistrarServicio():
              return render_template('RegistrarServicio.html')
          
          elif request.method == 'POST':
-              Servicio.registrarServicio(request.form['nombreServicio'], request.form['precio'])
+              if request.form['producto'] == "on":
+                   producto = 1
+              Servicio.registrarServicio(request.form['nombreServicio'], request.form['precio'], producto)
           
 
 #ConsultarServicio 
@@ -120,23 +121,6 @@ def ConsultarServicio():
         else:
              return render_template('Error.html')
 
-#RegistrarProducto
-@app.route("/RegistrarProducto", methods= ["GET","POST"])
-def RegistrarProducto():
-         if request.method == 'GET':
-             return render_template('RegistrarProducto.html')
-         
-         elif request.method == 'POST':
-              Producto.registrarProducto(request.form['nombreProducto'], request.form['precio'])
-    
-        
-#ConsultarProducto
-@app.route("/ConsultarProducto", methods= ["GET","POST"])
-def ConsultarProducto():
-        if session['logged'] == True:
-            return render_template('ConsultarProducto.html')
-        else:
-             return render_template('Error.html')
 
 #RegistrarNota
 @app.route("/RegistrarNota", methods= ["GET","POST"])
