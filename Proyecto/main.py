@@ -1,18 +1,9 @@
 from flask import Flask,flash, render_template,request,redirect,session
-import pyodbc
+from Conecction import cursor
 from Cliente import Cliente
 from Vehiculo import Vehiculo
 from Servicio import Servicio
-#Inicio conexion a base de datos 
-try:
-    #aqui, cambien aurora por el nombre de su server, database por el nombre de la base de datos, UID Y PWD son el usuario y contraseña para conectarse con credenciales de sql server
-    connection = pyodbc.connect('DRIVER={SQL Server};SERVER=AURORA;DATABASE=ProyectoTaller;UID=Felipe;PWD=rubio')
-    print("conexion exitosa")
-    cursor = connection.cursor()
 
-except Exception as ex:
-    print (ex)
-#Fin conexion a base de datos 
 
 
 #app de flask
@@ -46,6 +37,7 @@ def Login():
             cursor.execute("SELECT idAdmin FROM Admin where correo = '"+ correo +"'")
             resultado = cursor.fetchall()
             session['idAdmin'] = resultado[0][0]
+            session['vehiculos'] = []
             print("sesion iniciada correctamente")
             return redirect("/Home")
         #el query no dio match, el usuario no existe
@@ -97,7 +89,27 @@ def RegistrarVehiculo():
 @app.route("/ConsultarVehiculo", methods= ["GET","POST"])
 def ConsultarVehiculo():
         if session['logged'] == True:
-            return render_template('ConsultarVehiculo.html')
+            if request.method == 'GET':
+        
+             #return render_template('ConsultarVehiculo.html', listaVehiculos = vehiculos)
+             vehiculos = session['vehiculos'] 
+             return render_template('ConsultarVehiculo.html', listaVehiculos = vehiculos)
+            
+            elif request.method == 'POST':
+                 idVehiculo = request.form['IDVehiculo']
+                 marca = request.form['Marca']
+                 modelo = request.form['Modelo']
+                 color = request.form['Color']
+                 kilometraje = request.form['Kilometraje']
+                 nSerie = request.form['NumeroSerie']
+                 placa = request.form['Placa']
+                 idCliente = request.form['IDCliente']
+                
+                
+                 vehiculos = Vehiculo.obtenerVehiculos(idVehiculo,marca,modelo,color,kilometraje,nSerie, placa,idCliente)
+                 session['vehiculos'] = vehiculos
+                 return redirect("/ConsultarVehiculo")
+                 
         else:
              return render_template('Error.html')
 

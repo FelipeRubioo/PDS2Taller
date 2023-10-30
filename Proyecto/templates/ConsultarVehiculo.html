@@ -1,1 +1,65 @@
 <h1>Pagina de consultar vehiculos</h1>
+
+<!-- filtros de busqueda -->
+<form method="POST">
+
+    <label for="IDVehiculo">ID de Vehiculo:</label>
+    <input type="text" id="IDVehiculo" name="IDVehiculo">
+
+    <label for="Marca">Marca:</label>
+    <input type="text" id="Marca" name="Marca">
+    
+    <label for="Modelo">Modelo:</label>
+    <input type="text" id="Modelo" name="Modelo">
+    
+    <label for="Color">Color:</label>
+    <input type="text" id="Color" name="Color">
+    
+    <label for="Kilometraje">Kilometraje:</label>
+    <input type="text" id="Kilometraje" name="Kilometraje">
+
+    <label for="NumeroSerie">Numero de serie:</label>
+    <input type="text" id="NumeroSerie" name="NumeroSerie">
+    
+    <label for="Placa">Placa:</label>
+    <input type="text" id="Placa" name="Placa">
+
+    <label for="IDCliente">ID de Cliente:</label>
+    <input type="text" id="IDCliente" name="IDCliente">
+
+    <input type="submit">
+</form>
+
+
+<!-- Tabla que muestra los vehiculos-->
+
+    <table class="table table-info table-striped" id="tablaVehiculos">
+        <thead>
+            <tr>
+                <th scope="col">ID de Vehiculo</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Color</th>
+                <th scope="col">Kilometraje</th>
+                <th scope="col">numeroSerie</th>
+                <th scope="col">Placa</th>
+                <th scope="col">IDCliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehiculo in listaVehiculos %}
+            <tr>
+                <td>{{ vehiculo[0] }}</td>
+                <td>{{ vehiculo[1] }}</td>
+                <td>{{ vehiculo[2] }}</td>
+                <td>{{ vehiculo[3] }}</td>
+                <td>{{ vehiculo[4] }}</td>
+                <td>{{ vehiculo[5] }}</td>
+                <td>{{ vehiculo[6] }}</td>
+                <td>{{ vehiculo[7] }}</td>
+                <td><button class="editar-button" onclick="editarVehiculo(this)">Editar</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
