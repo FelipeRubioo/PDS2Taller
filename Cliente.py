@@ -51,7 +51,7 @@ class Cliente:
         else:
             direccion = "'" + direccion + "'"
 
-        print(sqlQuery.format(idCliente, nombreCliente, rfc, email, telefono, direccion))
+        
         cursor.execute(sqlQuery.format(idCliente, nombreCliente, rfc, email, telefono, direccion))
         resultado = cursor.fetchall()
     

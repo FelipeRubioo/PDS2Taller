@@ -1,1 +1,46 @@
 <h1>Pagina de consultar servicios</h1>
+
+<!-- filtros de busqueda -->
+<form method="POST">
+
+    <label for="idServicio">ID de servicio:</label>
+    <input type="text" id="idServicio" name="idServicio">
+
+    <label for="nombreServicio">nombreServicio:</label>
+    <input type="text" id="nombreServicio" name="nombreServicio">
+    
+    <label for="precio">precio:</label>
+    <input type="text" id="precio" name="precio">
+
+    <label for="producto">producto:</label>
+    <input type="checkbox" id="producto" name="producto">
+    
+    
+    <input type="submit">
+</form>
+
+
+<!-- Tabla que muestra los servicios-->
+
+    <table class="table table-info table-striped" id="tablaServicios">
+        <thead>
+            <tr>
+                <th scope="col">ID de servicio</th>
+                <th scope="col">Nombre de servicio</th>
+                <th scope="col">precio</th>
+                <th scope="col">producto</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for servicio in listaServicios %}
+            <tr>
+                <td>{{ servicio[0] }}</td>
+                <td>{{ servicio[1] }}</td>
+                <td>{{ servicio[2] }}</td>
+                <td>{{ servicio[3] }}</td>
+                <td><button class="editar-button" onclick="editarservicio(this)">Editar</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>

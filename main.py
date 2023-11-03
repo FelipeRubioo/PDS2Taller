@@ -39,6 +39,7 @@ def Login():
             session['idAdmin'] = resultado[0][0]
             session['vehiculos'] = []
             session['clientes'] = []
+            session['servicios'] = []
             print("sesion iniciada correctamente")
             return redirect("/Home")
         #el query no dio match, el usuario no existe
@@ -107,7 +108,7 @@ def ConsultarVehiculo():
         if session['logged'] == True:
             if request.method == 'GET':
         
-             #return render_template('ConsultarVehiculo.html', listaVehiculos = vehiculos)
+             
              vehiculos = session['vehiculos'] 
              return render_template('ConsultarVehiculo.html', listaVehiculos = vehiculos)
             
@@ -145,7 +146,23 @@ def RegistrarServicio():
 @app.route("/ConsultarServicio", methods= ["GET","POST"])
 def ConsultarServicio():
         if session['logged'] == True:
-            return render_template('ConsultarServicio.html')
+            if request.method == 'GET':
+        
+             servicios = session['servicios'] 
+             return render_template('ConsultarServicio.html', listaServicios = servicios)
+            
+            elif request.method == 'POST':
+                 idServicio = request.form['idServicio']
+                 nombreServicio = request.form['nombreServicio']
+                 precio = request.form['precio']
+                 producto = request.form.get('producto')
+                 if producto is not None:
+                      producto = request.form['producto']
+                 else:
+                      producto = ""
+                 servicios = Servicio.obtenerServicios(idServicio,nombreServicio,precio,producto)
+                 session['servicios'] = servicios
+                 return redirect("/ConsultarServicio")
         else:
              return render_template('Error.html')
 

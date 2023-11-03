@@ -15,6 +15,7 @@ SET @kilometraje  = {};
 SET @numeroSerie  = {};
 SET @placa = {};
 SET @idCliente  = {};
+
 -- Your SELECT statement with optional parameters
 SELECT idVehiculo, marca, modelo, color, kilometraje, numeroSerie, placa, idCliente
 FROM Vehiculo
