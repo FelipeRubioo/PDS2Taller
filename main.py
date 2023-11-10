@@ -129,10 +129,38 @@ def ConsultarVehiculo():
                  
         else:
              return render_template('Error.html')
+        
+@app.route("/EditarVehiculo", methods = ["GET","POST"])
+def EditarVehiculo():
+        if session['logged'] == True:
+              if request.method =='GET':
+                   return render_template("EditarVehiculo.html")
+              
+              if request.method == 'POST':
+                  idVehiculo = request.form['idVehiculo']
+                  marca = request.form['marca']
+                  modelo = request.form['modelo']
+                  color = request.form['color']
+                  kilometraje = request.form['kilometraje']
+                  nSerie = request.form['nSerie']
+                  placa = request.form['placa']
+                  idCliente = request.form['idCliente']
+                  
+                  Vehiculo.actualizarVehiculo(idVehiculo,marca,modelo,color,kilometraje,nSerie, placa,idCliente)
+                   
+                  return "se actualizo el vehiculo"
+                   
+                  
+@app.route("/PaginaEditarVehiculo", methods = ["GET","POST"])
+def paginaEditarVehiculo():
+     if session['logged'] == True:
+          if request.method == 'GET':
+               return render_template("EditarVehiculo.html")
 
 #RegistrarServicio
 @app.route("/RegistrarServicio", methods= ["GET","POST"])
 def RegistrarServicio():
+     if session['logged'] == True:
          if request.method == 'GET':
              return render_template('RegistrarServicio.html')
          

@@ -1,0 +1,60 @@
+<script>
+
+    function tomarDato(dato) {
+        console.log(`dato: ${dato}`)
+        valor = sessionStorage.getItem(dato)
+        document.getElementById(dato).value = valor
+
+    }
+
+    function mostrarDatos() {
+
+        //document.getElementById("idVehiculo").textContent = sessionStorage.getItem("idVehiculo")
+        let datos = ["idVehiculo","marca", "modelo", "color", "kilometraje", "nSerie", "placa", "idCliente"]
+
+        for (i = 0; i < datos.length; i++) {
+            tomarDato(datos[i])
+        }
+    }
+</script>
+
+<h1>Pantalla de editar vehiculo</h1>
+
+
+
+<body onload="mostrarDatos()">
+    <label for="textIdVehiculo">ID de Vehiculo:</label>
+        <p id="textIdVehiculo" name="textIdVehiculo"> </p>
+
+
+    <form action="EditarVehiculo" method="POST">
+        
+        <input type="hidden" id="idVehiculo" name="idVehiculo">
+        
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca">
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo">
+
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color">
+
+        <label for="kilometraje">Kilometraje:</label>
+        <input type="text" id="kilometraje" name="kilometraje">
+
+        <label for="nSerie">Numero de serie:</label>
+        <input type="text" id="nSerie" name="nSerie">
+
+        <label for="placa">Placa:</label>
+        <input type="text" id="placa" name="placa">
+
+        <label for="idCliente">ID de Cliente:</label>
+        <input type="text" id="idCliente" name="idCliente">
+
+
+        <input type="submit">
+    </form>
+
+
+</body>
