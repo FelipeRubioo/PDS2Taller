@@ -1,6 +1,5 @@
 <h1>Pagina de consultar clientes</h1>
 
-
 <body>
     <!-- filtros de busqueda -->
     <form method="POST">
@@ -62,30 +61,23 @@
 
             let idCliente = row.cells[0].textContent
             sessionStorage.setItem("idCliente", idCliente)
-            console.log(idCliente)
-
+           
             let nombreCliente = row.cells[1].textContent
             sessionStorage.setItem("nombreCliente", nombreCliente)
-            console.log(nombreCliente)
-
+            
             let rfc = row.cells[2].textContent
             sessionStorage.setItem("rfc", rfc)
-            console.log(rfc)
-
+            
             let email = row.cells[3].textContent
             sessionStorage.setItem("email", email)
-            console.log(email)
-
+           
             let telefono = row.cells[4].textContent
             sessionStorage.setItem("telefono", telefono)
-            console.log(telefono)
-
+            
             let direccion = row.cells[5].textContent
             sessionStorage.setItem("direccion", direccion)
-            console.log(direccion)
-
+            
             window.location.href = '/EditarCliente'
-
 
         }
     </script>

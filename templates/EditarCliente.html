@@ -1,7 +1,7 @@
 <script>
 
     function tomarDato(dato) {
-        console.log(`dato: ${dato}`)
+        
         valor = sessionStorage.getItem(dato)
         document.getElementById(dato).value = valor
 
@@ -9,7 +9,6 @@
 
     function mostrarDatos() {
         document.getElementById("textidCliente").textContent = sessionStorage.getItem("idCliente")
-        //document.getElementById("idCliente").textContent = sessionStorage.getItem("idCliente")
         let datos = ["idCliente","nombreCliente", "rfc", "email", "telefono", "direccion"]
 
         for (i = 0; i < datos.length; i++) {

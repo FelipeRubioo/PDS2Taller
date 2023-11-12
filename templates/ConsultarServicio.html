@@ -1,35 +1,36 @@
 <h1>Pagina de consultar servicios</h1>
 
-<!-- filtros de busqueda -->
-<form method="POST">
+<body>
+    <!-- filtros de busqueda -->
+    <form method="POST">
 
-    <label for="idServicio">ID de servicio:</label>
-    <input type="text" id="idServicio" name="idServicio">
+        <label for="idServicio">ID de servicio:</label>
+        <input type="text" id="idServicio" name="idServicio">
 
-    <label for="nombreServicio">nombreServicio:</label>
-    <input type="text" id="nombreServicio" name="nombreServicio">
-    
-    <label for="precio">precio:</label>
-    <input type="text" id="precio" name="precio">
+        <label for="nombreServicio">nombreServicio:</label>
+        <input type="text" id="nombreServicio" name="nombreServicio">
 
-    <label for="producto">producto:</label>
-    <input type="checkbox" id="producto" name="producto">
-    
-    
-    <input type="submit">
-</form>
+        <label for="precio">precio:</label>
+        <input type="text" id="precio" name="precio">
+
+        <label for="producto">producto:</label>
+        <input type="checkbox" id="producto" name="producto">
 
 
-<!-- Tabla que muestra los servicios-->
+        <input type="submit">
+    </form>
+
+
+    <!-- Tabla que muestra los servicios-->
 
     <table class="table table-info table-striped" id="tablaServicios">
         <thead>
             <tr>
                 <th scope="col">ID de servicio</th>
                 <th scope="col">Nombre de servicio</th>
-                <th scope="col">precio</th>
-                <th scope="col">producto</th>
-                
+                <th scope="col">Precio</th>
+                <th scope="col">Producto</th>
+
             </tr>
         </thead>
         <tbody>
@@ -39,8 +40,33 @@
                 <td>{{ servicio[1] }}</td>
                 <td>{{ servicio[2] }}</td>
                 <td>{{ servicio[3] }}</td>
-                <td><button class="editar-button" onclick="editarservicio(this)">Editar</button></td>
+                <td><button class="editar-button" onclick="editarServicio(this)">Editar</button></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <script>
+        function editarServicio(boton) {
+            let row = boton.parentNode.parentNode
+
+            let idServicio = row.cells[0].textContent
+            sessionStorage.setItem("idServicio", idServicio)
+            
+            let nombreServicio = row.cells[1].textContent
+            sessionStorage.setItem("nombreServicio", nombreServicio)
+           
+            let precio = row.cells[2].textContent
+            sessionStorage.setItem("precio", precio)
+            
+            let producto = row.cells[3].textContent
+            sessionStorage.setItem("producto", producto)
+
+            window.location.href = '/EditarServicio'
+
+
+        }
+    </script>
+
+
+</body>

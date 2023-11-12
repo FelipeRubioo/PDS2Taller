@@ -72,37 +72,29 @@
 
             let idVehiculo = row.cells[0].textContent
             sessionStorage.setItem("idVehiculo", idVehiculo)
-            console.log(idVehiculo)
             
             let marca = row.cells[1].textContent
             sessionStorage.setItem("marca", marca)
-            console.log(marca)
-
+            
             let modelo = row.cells[2].textContent
             sessionStorage.setItem("modelo", modelo)
-            console.log(modelo)
-
+            
             let color = row.cells[3].textContent
             sessionStorage.setItem("color", color)
-            console.log(color)
-
+            
             let kilometraje = row.cells[4].textContent
             sessionStorage.setItem("kilometraje", kilometraje)
-            console.log(kilometraje)
-
+            
             let nSerie = row.cells[5].textContent
             sessionStorage.setItem("nSerie", nSerie)
-            console.log(nSerie)
-
+            
             let placa = row.cells[6].textContent
             sessionStorage.setItem("placa", placa)
             console.log(placa)
 
-
             let idCliente = row.cells[7].textContent
             sessionStorage.setItem("idCliente", idCliente)
-            console.log(idCliente)
-
+            
             window.location.href = '/EditarVehiculo'
 
         

@@ -48,4 +48,16 @@ class Servicio:
             servicios.append(list(servicio))
 
         return servicios
+    
+    def actualizarServicio(idServicio,nombreServicio,precio,producto) -> None:
+        with open('ActualizarServicio.sql','r') as file:
+            sqlQuery = file.read()
+
+        if len(producto) == 0:
+            producto = 0
+        else:
+            producto = 1
+            
+        cursor.execute(sqlQuery.format(idServicio,nombreServicio,precio,producto))
+        connection.commit()
 #Servicio.registrarServicio("cambio de aceite", 200.30)

@@ -10,7 +10,6 @@ class Cliente:
         self.direccion = direccion
 
     def registrarCliente(nombreCliente: str, rfc: str,email: str, telefono:str , direccion: str ):
-        from main import cursor, connection
         cliente = Cliente(nombreCliente, rfc, email, telefono, direccion)
         
         #se agrega a la base de datos
@@ -62,7 +61,7 @@ class Cliente:
         return clientes
 
     def actualizarCliente(idCliente,nombreCliente,rfc,email,telefono,direccion) -> None:
-        with open('ActualizarClientes.sql','r') as file:
+        with open('ActualizarCliente.sql','r') as file:
             sqlQuery = file.read()
 
         cursor.execute(sqlQuery.format(idCliente,nombreCliente,rfc,email,telefono,direccion))

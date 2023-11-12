@@ -23,7 +23,7 @@ class Vehiculo:
 
 
     def obtenerVehiculos(idVehiculo,marca,modelo,color,kilometraje,nSerie,placa, idCliente) -> list:
-        with open('FiltroConsultarVehiculos.sql', 'r') as file:
+        with open('FiltroConsultarVehiculo.sql', 'r') as file:
             sqlQuery = file.read()
 
         if len(idVehiculo) == 0:

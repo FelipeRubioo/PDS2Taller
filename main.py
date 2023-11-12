@@ -213,8 +213,27 @@ def ConsultarServicio():
                  return redirect("/ConsultarServicio")
         else:
              return render_template('Error.html')
-
-
+        
+#EditarServicio
+@app.route("/EditarServicio", methods = ["GET","POST"])
+def EditarServicio():
+        if session['logged'] == True:
+              if request.method =='GET':
+                   return render_template("EditarServicio.html")
+              
+              if request.method == 'POST':
+                  idServicio = request.form['idServicio']
+                  nombreServicio = request.form['nombreServicio']
+                  precio = request.form['precio']
+                  producto = request.form.get('producto')
+                  if producto is not None:
+                      producto = request.form['producto']
+                  else:
+                      producto = ""
+                  Servicio.actualizarServicio(idServicio,nombreServicio,precio,producto)
+                  
+                  return "se actualizo el servicio"
+              
 #RegistrarNota
 @app.route("/RegistrarNota", methods= ["GET","POST"])
 def RegistrarNota():

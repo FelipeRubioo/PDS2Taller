@@ -1,0 +1,52 @@
+<script>
+
+    function tomarDato(dato) {
+
+        valor = sessionStorage.getItem(dato)
+        document.getElementById(dato).value = valor
+
+    }
+
+    function mostrarDatos() {
+        document.getElementById("textidServicio").textContent = sessionStorage.getItem("idServicio")
+
+        let checkboxProducto = document.getElementById("producto")
+        let checked = sessionStorage.getItem("producto")
+        isChecked = checked === "True"
+        checkboxProducto.checked = isChecked
+
+        let datos = ["idServicio","nombreServicio", "precio", "producto"]
+
+        for (i = 0; i < datos.length; i++) {
+            tomarDato(datos[i])
+        }
+    }
+</script>
+
+<h1>Pantalla de editar servicio</h1>
+
+
+
+<body onload="mostrarDatos()">
+    <label for="textidServicio">ID de Servicio:</label>
+        <p id="textidServicio" name="textidServicio"> </p>
+
+
+    <form action="EditarServicio" method="POST">
+        
+        <input type="hidden" id="idServicio" name="idServicio">
+        
+        <label for="nombreServicio">nombreServicio:</label>
+        <input type="text" id="nombreServicio" name="nombreServicio">
+
+        <label for="precio">precio:</label>
+        <input type="text" id="precio" name="precio">
+
+        <label for="producto">producto:</label>
+        <input type="checkbox" id="producto" name="producto">
+
+        <input type="submit">
+    </form>
+
+
+</body>
