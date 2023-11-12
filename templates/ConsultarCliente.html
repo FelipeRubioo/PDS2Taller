@@ -1,31 +1,33 @@
 <h1>Pagina de consultar clientes</h1>
 
-<!-- filtros de busqueda -->
-<form method="POST">
 
-    <label for="idCliente">ID de cliente:</label>
-    <input type="text" id="idCliente" name="idCliente">
+<body>
+    <!-- filtros de busqueda -->
+    <form method="POST">
 
-    <label for="nombreCliente">nombreCliente:</label>
-    <input type="text" id="nombreCliente" name="nombreCliente">
-    
-    <label for="rfc">RFC:</label>
-    <input type="text" id="rfc" name="rfc">
+        <label for="idCliente">ID de cliente:</label>
+        <input type="text" id="idCliente" name="idCliente">
 
-    <label for="email">email:</label>
-    <input type="text" id="email" name="email">
-    
-    <label for="telefono">telefono:</label>
-    <input type="text" id="telefono" name="telefono">
-    
-    <label for="direccion">direccion:</label>
-    <input type="text" id="direccion" name="direccion">
+        <label for="nombreCliente">nombreCliente:</label>
+        <input type="text" id="nombreCliente" name="nombreCliente">
 
-    <input type="submit">
-</form>
+        <label for="rfc">RFC:</label>
+        <input type="text" id="rfc" name="rfc">
+
+        <label for="email">email:</label>
+        <input type="text" id="email" name="email">
+
+        <label for="telefono">telefono:</label>
+        <input type="text" id="telefono" name="telefono">
+
+        <label for="direccion">direccion:</label>
+        <input type="text" id="direccion" name="direccion">
+
+        <input type="submit">
+    </form>
 
 
-<!-- Tabla que muestra los clientes-->
+    <!-- Tabla que muestra los clientes-->
 
     <table class="table table-info table-striped" id="tablaclientes">
         <thead>
@@ -36,7 +38,7 @@
                 <th scope="col">email</th>
                 <th scope="col">telefono</th>
                 <th scope="col">direccion</th>
-                
+
             </tr>
         </thead>
         <tbody>
@@ -53,3 +55,38 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <script>
+        function editarCliente(boton) {
+            let row = boton.parentNode.parentNode
+
+            let idCliente = row.cells[0].textContent
+            sessionStorage.setItem("idCliente", idCliente)
+            console.log(idCliente)
+
+            let nombreCliente = row.cells[1].textContent
+            sessionStorage.setItem("nombreCliente", nombreCliente)
+            console.log(nombreCliente)
+
+            let rfc = row.cells[2].textContent
+            sessionStorage.setItem("rfc", rfc)
+            console.log(rfc)
+
+            let email = row.cells[3].textContent
+            sessionStorage.setItem("email", email)
+            console.log(email)
+
+            let telefono = row.cells[4].textContent
+            sessionStorage.setItem("telefono", telefono)
+            console.log(telefono)
+
+            let direccion = row.cells[5].textContent
+            sessionStorage.setItem("direccion", direccion)
+            console.log(direccion)
+
+            window.location.href = '/EditarCliente'
+
+
+        }
+    </script>
+</body>

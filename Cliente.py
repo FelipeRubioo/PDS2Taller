@@ -60,4 +60,14 @@ class Cliente:
             clientes.append(list(cliente))
 
         return clientes
+
+    def actualizarCliente(idCliente,nombreCliente,rfc,email,telefono,direccion) -> None:
+        with open('ActualizarClientes.sql','r') as file:
+            sqlQuery = file.read()
+
+        cursor.execute(sqlQuery.format(idCliente,nombreCliente,rfc,email,telefono,direccion))
+        connection.commit()
+        
+        
+
 #Cliente.registrarCliente("Felipe Rubio", "RUFI89", "FELIPE9201@GMAIL.COM", "6623251442", "GENERAL PIÑA 66")

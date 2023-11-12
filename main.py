@@ -93,6 +93,26 @@ def ConsultarCliente():
         else:
              return render_template('Error.html')
 
+#EditarCliente
+@app.route("/EditarCliente", methods = ["GET","POST"])
+def EditarCliente():
+        if session['logged'] == True:
+              if request.method =='GET':
+                   return render_template("EditarCliente.html")
+              
+              if request.method == 'POST':
+                  idCliente = request.form['idCliente']
+                  nombreCliente = request.form['nombreCliente']
+                  rfc = request.form['rfc']
+                  email = request.form['email']
+                  telefono = request.form['telefono']
+                  direccion = request.form['direccion']
+                  
+                  Cliente.actualizarCliente(idCliente,nombreCliente,rfc,email,telefono,direccion)
+                   
+                  return "se actualizo el cliente"
+              
+
 #RegistrarVehiculo
 @app.route("/RegistrarVehiculo", methods= ["GET","POST"])
 def RegistrarVehiculo():
