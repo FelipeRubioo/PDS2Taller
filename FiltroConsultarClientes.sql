@@ -13,7 +13,7 @@ SET @telefono  = {};
 SET @direccion  = {};
 
 -- Your SELECT statement with optional parameters
-SELECT idCliente, nombreCliente, rfc, email, telefono, direccion
+SELECT *
 FROM Cliente
 WHERE
     (@idCliente IS NULL OR idCliente = @idCliente)

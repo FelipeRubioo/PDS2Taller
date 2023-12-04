@@ -10,7 +10,7 @@ SET @producto  = {};
 
 
 -- Your SELECT statement with optional parameters
-SELECT idServicio, nombreServicio, precio, producto
+SELECT *
 FROM Servicio
 WHERE
     (@idServicio IS NULL OR idServicio = @idServicio)

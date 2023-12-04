@@ -18,7 +18,7 @@ class Cliente:
         cursor.execute(sqlQuery, (str(cliente.nombreCliente), str(cliente.rfc) , str(cliente.email) , str(cliente.telefono) , str(cliente.direccion)))
         connection.commit()
     
-    def obtenerClientes(idCliente,nombreCliente,rfc,email,telefono,direccion) -> list:
+    def obtenerClientes(idCliente = "",nombreCliente = "",rfc = "",email = "",telefono = "",direccion = "") -> list:
         with open('FiltroConsultarClientes.sql', 'r') as file:
             sqlQuery = file.read()
 
@@ -60,6 +60,7 @@ class Cliente:
 
         return clientes
 
+    
     def actualizarCliente(idCliente,nombreCliente,rfc,email,telefono,direccion) -> None:
         with open('ActualizarCliente.sql','r') as file:
             sqlQuery = file.read()

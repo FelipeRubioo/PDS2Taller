@@ -22,8 +22,8 @@ class Vehiculo:
 
 
 
-    def obtenerVehiculos(idVehiculo,marca,modelo,color,kilometraje,nSerie,placa, idCliente) -> list:
-        with open('FiltroConsultarVehiculo.sql', 'r') as file:
+    def obtenerVehiculos(idCliente="", idVehiculo="",marca="",modelo="",color="",kilometraje="",nSerie="",placa="") -> list:
+        with open('FiltroConsultarVehiculos.sql', 'r') as file:
             sqlQuery = file.read()
 
         if len(idVehiculo) == 0:
@@ -70,9 +70,9 @@ class Vehiculo:
             vehiculos.append(list(vehiculo))
 
         return vehiculos
-
+    
     def actualizarVehiculo(idVehiculo,marca,modelo,color,kilometraje,nSerie,placa,idCliente) -> None:
-        with open('ActualizarVehiculos.sql', 'r') as file:
+        with open('ActualizarVehiculo.sql', 'r') as file:
             sqlQuery = file.read()
 
         cursor.execute(sqlQuery.format(idVehiculo, marca, modelo, color, kilometraje, nSerie, placa, idCliente))

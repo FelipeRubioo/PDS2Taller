@@ -16,7 +16,7 @@ class Servicio:
         cursor.execute(sqlQuery, (str(servicio.nombreServicio), float(servicio.precio) , int(servicio.producto)))
         connection.commit()
 
-    def obtenerServicios(idServicio,nombreServicio,precio,producto) -> list:
+    def obtenerServicios(idServicio = "",nombreServicio = "",precio = "",producto = "") -> list:
         with open('FiltroConsultarServicios.sql', 'r') as file:
             sqlQuery = file.read()
 
@@ -38,8 +38,6 @@ class Servicio:
         else:
             producto = 1
 
-
-        
         cursor.execute(sqlQuery.format(idServicio, nombreServicio, precio, producto))
         resultado = cursor.fetchall()
     
@@ -48,6 +46,7 @@ class Servicio:
             servicios.append(list(servicio))
 
         return servicios
+    
     
     def actualizarServicio(idServicio,nombreServicio,precio,producto) -> None:
         with open('ActualizarServicio.sql','r') as file:
