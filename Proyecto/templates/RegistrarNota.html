@@ -1,1 +1,442 @@
-<h1>Pagina de registro de nota</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: Linotype;
+        }
+
+        /*------------- HEADER -------------*/
+        .headerL {
+            display: flex;
+            padding: 10px 50px;
+            background: #32343B;
+            color: #fff;
+            border-bottom: 1px solid #e0e4e8;
+        }
+
+        .logo-text {
+            flex: 1;
+            color: #FFF;
+            text-align: start;
+            font-family: Red Rose;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 400;
+            margin-left: 10px;
+            line-height: normal;
+        }
+
+        .exit-text {
+            flex: 2;
+            padding: 15px;
+            color: #ffffffa7;
+            text-align: end;
+            font-family: Red Rose;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+        }
+
+        /*------------- CONTENEDOR BLANCO -------------*/
+        body {
+            background-color: #E4E4E6;
+        }
+
+        /*------------- CONTENEDOR  -------------*/
+        .wrapper {
+            display: flex;
+            position: fixed;
+        }
+
+        /*------------- CONTENEDOR SIDE BAR COLOR Y TAMANO -------------*/
+        .wrapper .sidebar {
+            width: 200px;
+            height: 100%;
+            background: #3E4765;
+            padding: 2px 0px;
+            position: fixed;
+        }
+
+        /*------------- CONTENEDOR SIDEBAR Contenido Botones -------------*/
+        .wrapper .sidebar ul li {
+            padding: 20px;
+            border-bottom: 1px solid #bdb8d7;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+        }
+
+        .wrapper .sidebar ul li a {
+            color: #ffffffcb;
+            display: block;
+        }
+
+        .wrapper .sidebar ul li a .fas {
+            width: 25px;
+        }
+
+        .wrapper .sidebar ul li:hover {
+            background-color: #26243183;
+        }
+
+        .wrapper .sidebar ul li:hover a {
+            color: #fff;
+        }
+
+
+        /*------------- CONTENEDOR BLANCO CONTENIDO PRINCIPAL -------------*/
+        /*------------- TITULO -------------*/
+        .content-header {
+            display: flex;
+            position: fixed;
+            padding: 45px 480px;
+            width: 100%;
+            margin-left: 200px;
+            color: #111111;
+            font-size: 30px;
+            font-weight: bold;
+            justify-content: flex-start;
+        }
+
+        .form-container {
+            display: flex;
+            margin-top: 110px;
+            margin-left: 280px;
+            height: 100vh;
+            gap: 10px;
+            flex-direction: column;
+            font-size: 25px;
+
+        }
+
+        .form-container .text {
+            width: 200px;
+            padding: 7px;
+            font-size: 15px;
+            border: 1px solid #a1a0a0;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            outline: none;
+        }
+
+        .botonRegistrarNota {
+            padding: 8px 30px;
+            font-size: 16px;
+            margin-left: 45px;
+            margin-top: 25px;
+            background-color: #3E4765;
+
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .botonRegistrarNota:hover {
+            background-color: #2c3146;
+        }
+    </style>
+
+
+
+
+    <title>Registro de nota de servicio</title>
+
+</head>
+
+<title>Registrar Vehiculos</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="styles.css">
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://kit.fontawesome.com/1787678801.js" crossorigin="anonymous"></script>
+
+<body>
+    <div class="headerL">
+        <div class="logo-text">SGNS</div>
+
+        <a href="Login" class="exit-text">SALIR</a>
+    </div>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul>
+                <li><a href="Home"><i class="fa-solid fa-house"></i> Principal</a></li>
+                <li><a href="RegistrarCliente"><i class="fa-solid fa-user"></i> Registrar Cliente</a></li>
+                <li><a href="ConsultarCliente"><i class="fa-solid fa-user"></i> Consultar Cliente</a></li>
+                <li><a href="RegistrarVehiculo"><i class="fa-solid fa-car"></i> Registrar Vehiculo</a></li>
+                <li><a href="ConsultarVehiculo"><i class="fa-solid fa-car"></i> Consultar Vehiculo</a></li>
+                <li><a href="RegistrarServicio"><i class="fa-solid fa-wrench"></i> Registrar Productos/Servicios</a>
+                </li>
+                <li><a href="ConsultarServicio"><i class="fa-solid fa-wrench"></i> Consultar Productos/Servicios</a>
+                </li>
+                <li><a href="RegistrarNota"><i class="fa-solid fa-file-pen"></i> Registrar Notas de Servicio</a></li>
+                <li><a href="ConsultarNota"><i class="fa-solid fa-file-pen"></i> Consultar Notas de Servicio</a></li>
+            </ul>
+        </div>
+    </div>
+    </header>
+    <div class="content-header">Registro Notas</div>
+
+
+    <div class="form-container">
+        <form  action="RegistrarNota" id="formNota" method="post">
+            <!--Primer dato del form, nombre del cliente -->
+            <div id="step1" class="step">
+                <label for="cliente">Paso 1: nombre de cliente</label>
+                <select name="nombreCliente" id="nombreCliente" class="text" required>
+                    {% for cliente in listaClientes %}
+                    <!--Vamos a mostrar el nombre de los clientes, pero el valor es el id del cliente -->
+                    <option value="{{ cliente[0] }}">{{ cliente[1] }}</option>
+                    {% endfor %}
+                </select>
+                <button type="button" onclick="siguiente(this) ">Siguiente</button>
+            </div>
+
+            <!--Segundo dato del form, vehiculo  -->
+            <div id="step2" class="step hidden" hidden>
+                <label for="vehiculo">Paso 2: vehiculo</label>
+                <select name="vehiculo" id="vehiculo" class="text">
+
+                </select>
+                <button type="button" onclick="siguiente(this)">Siguiente</button>
+            </div>
+
+            <!-- Tercer paso del form, servicio y cantidad -->
+            <div id="step3" class="step hidden" hidden>
+                <label for="servicio">Paso 3: Servicio / Producto</label>
+                <select name="servicio" id="servicio" class="text" required>
+                    {% for servicio in listaServicios %}
+                    <!--Vamos a mostrar el nombre del servicio o producto, pero el valor es el id del servicio -->
+                    <option value="{{ servicio[0] }}" data-precio="{{ servicio[2] }}">{{ servicio[1] }}</option>
+                    {% endfor %}
+                </select>
+                <!--cantidad -->
+                <label for="cantidad">Cantidad </label>
+                <input type="number" id="cantidad" name="cantidad" class="text" required>
+                <button type="button" onclick="siguiente(this)">Siguiente</button>
+            </div>
+
+            <!-- Cuarto paso del form, fecha limite del credito -->
+            <div id="step4" class="step hidden" hidden>
+                <label for="fechaPlazo">Paso 5: Fecha limite del credito</label>
+                <input type="date" id="fechaPlazo" name="fechaPlazo" class="text" required>
+                <button type="button" onclick="siguiente(this)">Siguiente</button>
+            </div>
+
+            <!-- Quinto paso del form, es facturado? -->
+            <div id="step5" class="step hidden" hidden>
+                <label for="facturado">Paso 6: Facturado?</label>
+                <input type="checkbox" id="facturado" class="text" name="facturado">
+                <button type="button" onclick="siguiente(this)">Siguiente</button>
+            </div>
+
+            <!-- Sexto paso del form, totales -->
+
+            <div id="step6" class="step hidden" hidden>
+                <!-- precio neto -->
+                <label for="precioNeto">Precio neto</label>
+                <input type="number" id="precioNeto" name="precioNeto" class="text" required readonly>
+
+                <!-- precio impuestos-->
+                <label for="precioImpuestos">Impuestos</label>
+                <input type="number" id="precioImpuestos" name="precioImpuestos" class="text" required readonly>
+
+                <!-- precio total -->
+                <label for="precioTotal">Total</label>
+                <input type="number" id="precioTotal" name="precioTotal" class="text" required readonly>
+
+                <button type="submit" class="botonRegistrarNota">Subir</button>
+
+            </div>
+    </div>
+    </form>
+    <!-- Bootstrap modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Se guardo la nota correctamente
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Handle form submission using AJAX
+        $(document).ready(function () {
+            $('#formNota').submit(function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var formData = new FormData(this)
+
+                // Send AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '/RegistrarNota',
+                    data: formData,
+                    //estas dos lineas son para que se pueda pasar la imagen correctamente
+                    contentType: false,
+                    //si enviamos formData, processData debe ser False
+                    processData: false,
+                    success: function (response) {
+                        // Handle success response
+                        $('#successModal').modal('show');
+
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle error response
+                        console.error(error);
+                    }
+                });
+            });
+        });
+        //la fecha de limite de credito no puede ser antes del dia de hoy
+        const currentDate = new Date();
+        // Format the current date as 'YYYY-MM-DD'
+        const formattedCurrentDate = currentDate.toISOString().split('T')[0];
+        document.getElementById('fechaPlazo').min = formattedCurrentDate;
+
+        //los valores de los totales cambian cuando se cambia la cantidad
+        let inputCantidad = document.getElementById('cantidad');
+        let selectServicio = document.getElementById('servicio');
+        let inputPrecioNeto = document.getElementById('precioNeto');
+        let inputImpuestos = document.getElementById('precioImpuestos');
+        let inputTotal = document.getElementById('precioTotal');
+
+
+
+
+        //cuando cambia el valor de la cantidad, se actualizan los totales
+        inputCantidad.addEventListener('change', function () {
+
+            let cantidad = inputCantidad.value;
+            let precio = selectServicio.options[selectServicio.selectedIndex].getAttribute('data-precio');
+
+
+            //el precio neto es la cantidad por el precio
+            let precioNeto = cantidad * precio;
+            inputPrecioNeto.value = precioNeto;
+
+            //los impuestos es el 16% del precio neto 
+            let impuestos = precioNeto * .16;
+            inputImpuestos.value = impuestos;
+
+            //el total es el precio neto + impuestos
+            inputTotal.value = precioNeto + impuestos;
+        })
+
+        function siguiente(boton) {
+            div = boton.parentElement
+            divId = div.id
+            console.log(divId)
+            //despues de seleccionar el cliente, se obtienen los vehiculos de ese cliente y se hace el select de vehiculos
+            //si se dio click "siguiente" en nombre de cliente
+            if (divId == "step1") {
+                $(document).ready(function () {
+                    var idCliente = document.getElementById('nombreCliente').value;
+
+                    // Send AJAX request
+                    let xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/SelectVehiculos', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            //respuesta
+                            let responseArray = JSON.parse(xhr.responseText);
+
+                            //metemos las opciones al select
+                            let SelectVehiculos = document.getElementById('vehiculo')
+                            for (let i = 0; i < responseArray.length; i++) {
+                                const vehiculo = responseArray[i];
+                                var newOption = document.createElement("option");
+                                //el valor de la opcion es el ID del vehiculo
+                                newOption.value = vehiculo[0];
+                                //el text es la marca, modelo, color y placas del carro 
+                                newOption.text = `marca: ${vehiculo[1]} - modelo: ${vehiculo[2]} - color: ${vehiculo[3]} - placas: ${vehiculo[6]} `;
+
+                                SelectVehiculos.add(newOption);
+                            }
+                        }
+                    };
+
+                    xhr.send(JSON.stringify({ idCliente: idCliente }));
+                });
+            }
+
+            //si se dio click "siguiente" en "vehiculo"
+            if (divId == "step2") {
+                $(document).ready(function () {
+                    var idCliente = document.getElementById('nombreCliente').value;
+
+
+                    // Send AJAX request
+                    let xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/SelectVehiculos', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            //respuesta
+                            let responseArray = JSON.parse(xhr.responseText);
+
+                            //metemos las opciones al select
+                            let SelectVehiculos = document.getElementById('vehiculo')
+                            for (let i = 0; i < responseArray.length; i++) {
+                                const vehiculo = responseArray[i];
+                                var newOption = document.createElement("option");
+                                //el valor de la opcion es el ID del vehiculo
+                                newOption.value = vehiculo[0];
+                                //el text es 
+                                newOption.text = `marca: ${vehiculo[1]} - modelo: ${vehiculo[2]} - color: ${vehiculo[3]} - placas: ${vehiculo[6]} `;
+
+                                SelectVehiculos.add(newOption);
+                            }
+                        }
+                    };
+
+                    xhr.send(JSON.stringify({ idCliente: idCliente }));
+                });
+            }
+
+            //esconde el boton "siguiente" actual
+            boton.hidden = true
+            //muestra el siguiente input
+            siguienteDiv = div.nextElementSibling
+            siguienteDiv.hidden = false
+        }
+
+    </script>
+
+</body>
+
+</html>

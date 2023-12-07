@@ -1,47 +1,59 @@
-<!DOCTYPE html>
-<html>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /* Estilos generales */
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: Linotype;
+}
 
-    .header-text {
-      flex-grow: 1;
-      text-align: center;
-    }
+/*------------- HEADER -------------*/
+.headerL{
+  display: flex;
+  padding: 10px 50px;
+  background: #32343B;
+  color: #fff;
+  border-bottom: 1px solid #e0e4e8;
+}
+.logo-text {
+  flex: 1;
+  color: #FFF;
+  text-align: start;
+  font-family: Red Rose;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 10px;
+  line-height: normal;
+}
+.exit-text {
+  flex: 2;
+  padding: 15px;
+  color: #ffffffa7;
+  text-align: end;
+  font-family: Red Rose;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  
+}
+/*------------- CONTENEDOR  -------------*/
+body{
+   background-color: #3E4765;
+}
 
-    .carrito-button,
-    .logout-button {
-      background-color: #8B4513;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: bold;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-left: 10px;
-      width: 90px;
-      height: 30px;
-      line-height: 30px;
-    }
+/*------------- CONTENEDOR  -------------*/
+.wrapper{
+  display: flex;
+  position: fixed;
+}
 
-    .carrito-button:hover,
-    .logout-button:hover {
-      background-color: #45a049;
-    }
+  
 
     html,body {
       height: 100%;
@@ -87,6 +99,7 @@
       height: 350px;
       max-width: 200px;
       margin: 0 10px 20px;
+      background-color: #f3f3f3;
     }
 
     .card:hover {
@@ -94,17 +107,14 @@
     }
 
     .container {
-      padding: 2px 16px;
+      padding: 25px 25px;
     }
 
-    .card img {
-      width: 100%;
-      height: 100%;
-      object-fit: fill;
-    }
+  
 
-    .card h4 {
-      margin-top: 10px;
+    .card h2 {
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
 
     .card button {
@@ -112,7 +122,7 @@
     }
 
     .ver-mas-button {
-      background-color: #8B4513;
+      background-color: #4CAF50;
       color: #fff;
       padding: 10px 20px;
       border: none;
@@ -124,67 +134,56 @@
     }
 
     .ver-mas-button:hover {
-      background-color: #5a2d0c;
+      background-color: #2b642d;
     }
 
-    footer {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
+    
   </style>
 </head>
 
 <body>
   
   <header>
-    <div class="header-text">
-      <h1>Taller Mecanico Valdez</h1>
-      <p>Bienvenido!</p>
-    </div>
-    <div>
-      <p> Nombre de usuario</p>
-      <a href="/Logout" class="logout-button">Cerrar sesión</a>
-    </div>
-  </header>
+    <div class="headerL">
+      <div class="logo-text">SGNS</div>
+      <a href="Login" class="exit-text">SALIR</a>
+  </div>
   
   <div class="content">
     <!-- Contenedor con opciones principales del portal-->
     <div class="card-container">
       <div class="card">
-        <img src="/static/Vehiculo.png" alt="Vehiculo" style="width:100%">
+        
         <div class="container">
-          <h4><b>Vehiculos</b></h4>
-          <a href="/RegistrarVehiculo"><button type="button" class="ver-mas-button" >Registrar Vehiculo</button></a>
-          <a href="/ConsultarVehiculo"><button type="button" class="ver-mas-button"  style="margin-top: 10px;" >Consultar Vehiculos</button></a>
+          <h2><b>Vehiculos</b></h2>
+          <a href="RegistrarVehiculo"><button type="button" class="ver-mas-button" >Registrar Vehiculo</button></a>
+          <a href="ConsultarVehiculo"><button type="button" class="ver-mas-button"  style="margin-top: 10px;" >Consultar Vehiculos</button></a>
         </div>
       </div>
 
       <div class="card">
-        <img src="/static/Cliente.png" alt="Cliente" style="width:100%">
         <div class="container">
-          <h4><b>Clientes</b></h4>
-          <a href="/RegistrarCliente"><button type="button" class="ver-mas-button" >Registrar Cliente</button></a>
-          <a href="/ConsultarCliente"><button type="button" class="ver-mas-button" style="margin-top: 10px;">Consultar Clientes</button></a>
+          <h2><b>Clientes</b></h2>
+          <a href="RegistrarCliente"><button type="button" class="ver-mas-button" >Registrar Cliente</button></a>
+          <a href="ConsultarCliente"><button type="button" class="ver-mas-button" style="margin-top: 10px;">Consultar Clientes</button></a>
         </div>
       </div>
 
       <div class="card">
-        <img src="/static/Recibo.png" alt="Recibo de compra" style="width:100%">
+       
         <div class="container">
-          <h4><b>Notas de servicio</b></h4>
-          <a href="/RegistrarNota"><button type="button" class="ver-mas-button" >Registrar Nota</button></a>
-          <a href="/ConsultarNota"><button type="button" class="ver-mas-button"  style="margin-top: 10px;">Consultar notas</button></a>
+          <h2><b>Notas de servicio</b></h2>
+          <a href="RegistrarNota"><button type="button" class="ver-mas-button" >Registrar Nota</button></a>
+          <a href="ConsultarNota"><button type="button" class="ver-mas-button"  style="margin-top: 10px;">Consultar notas</button></a>
         </div>
       </div>
 
       <div class="card">
-        <img src="/static/Servicio.png" alt="Trabajador dando servicio" style="width:100%">
+        
         <div class="container">
-          <h4><b>Servicios/Productos</b></h4>
-          <a href="/RegistrarServicio"><button type="button" class="ver-mas-button" >Registrar servicio/producto</button></a>
-          <a href="/ConsultarServicio"><button type="button" class="ver-mas-button"  style="margin-top: 10px;">Consultar servicio/producto</button></a>
+          <h2><b>Servicios Productos</b></h2>
+          <a href="RegistrarServicio"><button type="button" class="ver-mas-button" >Registrar servicio/producto</button></a>
+          <a href="ConsultarServicio"><button type="button" class="ver-mas-button"  style="margin-top: 10px;">Consultar servicio/producto</button></a>
         </div>
       </div>
 
@@ -194,9 +193,7 @@
 
   </div>
   
-  <footer>
-    <p>© 2023 Herramienta de gestion de talleres.</p>
-  </footer>
+  
 </body>
 
 </html>

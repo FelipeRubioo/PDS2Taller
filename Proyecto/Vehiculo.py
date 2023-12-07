@@ -22,7 +22,7 @@ class Vehiculo:
 
 
 
-    def obtenerVehiculos(idVehiculo,marca,modelo,color,kilometraje,nSerie,placa, idCliente) -> list:
+    def obtenerVehiculos(idCliente="", idVehiculo="",marca="",modelo="",color="",kilometraje="",nSerie="",placa="") -> list:
         with open('FiltroConsultarVehiculos.sql', 'r') as file:
             sqlQuery = file.read()
 
@@ -70,4 +70,13 @@ class Vehiculo:
             vehiculos.append(list(vehiculo))
 
         return vehiculos
+    
+    def actualizarVehiculo(idVehiculo,marca,modelo,color,kilometraje,nSerie,placa,idCliente) -> None:
+        with open('ActualizarVehiculo.sql', 'r') as file:
+            sqlQuery = file.read()
+
+        cursor.execute(sqlQuery.format(idVehiculo, marca, modelo, color, kilometraje, nSerie, placa, idCliente))
+        connection.commit()
+
+
 #Vehiculo.registrarVehiculo("volkswagen","bocho","gris","14265","1458712","wer14552",2)

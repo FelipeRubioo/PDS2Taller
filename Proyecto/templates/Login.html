@@ -1,32 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <title>Login</title>
   <style>
-
-
-    /* Estilos generales */
-  body {
-  font-family: Arial, sans-serif;
+  
+  *{
   margin: 0;
   padding: 0;
-  background-image: url("/static/camisetaMujer1.png");
-  background-size: cover;
-  background-position: center;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: Linotype;
+}
+/*------------- HEADER SGNS NEGRO -------------*/
+.headerL{
+  display: flex;
+  padding: 10px 50px;
+  background: #32343B;
+  color: #fff;
+  border-bottom: 1px solid #e0e4e8;
+}
+.logo-text {
+  flex: 1;
+  color: #FFF;
+  text-align: start;
+  font-family: Red Rose;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 10px;
+  line-height: normal;
 }
 
+
+/*------------- CONTENEDOR  -------------*/
+body{
+   background-color: #3E4765;
+}
+
+/*------------- CONTENEDOR  -------------*/
+.wrapper{
+  display: flex;
+  position: fixed;
+}
 /* Estilos para el contenedor del formulario */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f2f2f2;
+  height: 90vh;
+  /*background-color: #f2f2f2;*/
 }
 
 /* Estilos para el formulario de inicio de sesión */
 .login-form {
   width: 300px;
+  height: 240px;
   padding: 20px;
   background-color: #fff;
   border-radius: 5px;
@@ -38,6 +67,7 @@
   display: block;
   width: 100%;
   padding: 10px;
+  margin-top: 15px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -73,18 +103,22 @@
 }
 
 .login-form p a:hover {
-  color: #45a049;
+  color: #38813c;
 }
   </style>
 </head>
 <body>
+  <div class="headerL">
+    <div class="logo-text">SGNS</div>
+</div>
   <div class="login-container">
     <form class="login-form" method="POST">
       <h2>Login</h2>
       <input type="text" name="correo" placeholder="Correo">
-      <input type="password" name="contraseña" placeholder="Contraseña">
-      <button type="submit">Iniciar sesión</button>
+      <input type="password" name="contrasena" placeholder="Contrasena">
+      <button type="submit">Iniciar sesion</button>
     </form>
   </div>
+  
 </body>
 </html>

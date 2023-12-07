@@ -15,8 +15,10 @@ SET @kilometraje  = {};
 SET @numeroSerie  = {};
 SET @placa = {};
 SET @idCliente  = {};
+
+
 -- Your SELECT statement with optional parameters
-SELECT idVehiculo, marca, modelo, color, kilometraje, numeroSerie, placa, idCliente
+SELECT *
 FROM Vehiculo
 WHERE
     (@idVehiculo IS NULL OR idVehiculo = @idVehiculo)

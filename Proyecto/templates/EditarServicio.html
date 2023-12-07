@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   
-    
+  
   </head>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
@@ -102,7 +102,7 @@
 .content-header{
   display: flex;
   position: fixed;
-  padding: 45px 480px;
+  padding: 10px 30px;
   width: 100%;
   margin-left: 200px;
   color: #111111;
@@ -110,14 +110,33 @@
   font-weight: bold;
   justify-content: flex-start;
 }
+.form-container1 {
+    display: flex;
+    margin-top: 65px;
+    margin-left: 230px;
+    height: 50px;
+    font-size: 25px;
+    
+}
+
+.form-container1  .text{
+  width: 200px;
+  padding: 7px;
+  font-size: 15px;
+  border: 1px solid #a1a0a0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  outline: none;
+}
 
 .form-container {
     display: flex;
-    margin-top: 110px;
-    margin-left: 680px;
+    margin-top: 1px;
+    margin-left: 230px;
+    margin-right: 30px;
     height: 100vh;
     gap: 10px;
-    flex-direction: column;
+    flex-direction: row;
     font-size: 25px;
     
 }
@@ -132,29 +151,48 @@
   outline: none;
 }
 
-.botonRegistrarServicio{
-    padding: 8px 30px;
+input[type="submit"] {
+    padding: 4px 15px;
     font-size: 16px;
-    margin-left: 45px;
-    margin-top: 25px;
+    margin-left: 570px;
+    margin-top: 20px;
     background-color: #3E4765;
-  
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.botonRegistrarServicio:hover{
-  background-color: #2c3146;
 }
 
-    </style>
-
-</head>
+</style>
 
 
-<title>Registrar Servicio</title>
+<script>
+
+    function tomarDato(dato) {
+
+        valor = sessionStorage.getItem(dato)
+        document.getElementById(dato).value = valor
+
+    }
+
+    function mostrarDatos() {
+        document.getElementById("textidServicio").textContent = sessionStorage.getItem("idServicio")
+
+        let checkboxProducto = document.getElementById("producto")
+        let checked = sessionStorage.getItem("producto")
+        isChecked = checked === "True"
+        checkboxProducto.checked = isChecked
+
+        let datos = ["idServicio","nombreServicio", "precio", "producto"]
+
+        for (i = 0; i < datos.length; i++) {
+            tomarDato(datos[i])
+        }
+    }
+</script>
+
+<head>
+    <title>Vehiculos</title>
     <meta charset="UTF-8">
       <link rel="stylesheet" href="styles.css">
       <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -183,48 +221,56 @@
         </div>
     </div>
 
-        <div class="content-header">Registro de Servicio</div>  
-    
+        <div class="content-header">Editar Servicio</div> 
 
+
+
+<body onload="mostrarDatos()">
+    <div class="form-container1">
+    <label for="textidServicio">ID de Servicio:</label>
+        <p id="textidServicio" name="textidServicio"> </p>
+    </div>
     <div class="form-container">
-        <form id="formServicio" method="POST">
-            <label for="inputNombreServicio">Nombre del servicio:</label>
-            <input type="text" id="inputNombreServicio" name="nombreServicio" class="text" required><br>
-    
-            <label for="inputPrecio">Precio:</label>
-            <input type="text" id="inputPrecio" name="precio"  class="text" required><br>
-            
-            <label for="inputProducto">¿Es un producto?</label>
-            <input type="checkbox" id="inputProducto" name="producto"><br>
-            
-            <button type="submit" class="botonRegistrarServicio" id="botonRegistrarServicio">Registrar Servicio</button>
-        </form>
+    <form id="formEditarServicio" action="EditarServicio" method="POST">
+        
+        <input type="hidden" id="idServicio" name="idServicio">
+        
+        <label for="nombreServicio">nombreServicio:</label>
+        <input type="text" id="nombreServicio" name="nombreServicio" class="text">
 
-    </div>
-    <!-- Bootstrap modal -->
-  <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="successModalLabel">Éxito</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Se guardo el servicio
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
+        <label for="precio">precio:</label>
+        <input type="text" id="precio" name="precio" class="text">
+
+        <label for="producto">producto:</label>
+        <input type="checkbox" id="producto" name="producto" class="text">
+
+        <input type="submit">
+    </form>
+</div>
+ <!-- Bootstrap modal -->
+ <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       Se actualizó el servicio
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+     </div>
+   </div>
+ </div>
 </div>
 <script>
   // Handle form submission using AJAX
   $(document).ready(function () {
-    $('#formServicio').submit(function (event) {
+    $('#formEditarServicio').submit(function (event) {
       event.preventDefault(); // Prevent default form submission
 
       var formData = new FormData(this)
@@ -232,7 +278,7 @@
       // Send AJAX request
       $.ajax({
         type: 'POST',
-        url: '/RegistrarServicio',
+        url: '/EditarServicio',
         data: formData,
         //estas dos lineas son para que se pueda pasar la imagen correctamente
         contentType: false, 
@@ -251,7 +297,6 @@
     });
   });
 </script>
+
 </body>
-
-
 </html>
